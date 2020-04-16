@@ -1,0 +1,22 @@
+{
+  "name": "takenotes",
+  "version": "1.0.0",
+  "description": "demo application to take notes",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AratioD/takenotes.git"
+  },
+  "author": "antti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AratioD/takenotes/issues"
+  },
+  "homepage": "https://github.com/AratioD/takenotes#readme",
+  "dependencies": {
+    "validator": "^10.8.0"
+  }
+}
