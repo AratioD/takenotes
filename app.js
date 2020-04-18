@@ -4,7 +4,7 @@ const notes = require('./notes.js')
 
 // customize yargs version
 yargs.version('1.1.0')
-
+console.log('DOCTOR RESERVATION SYSTEM 24/7 HOSPITAL')
 // Create yargs version
 
 // add new note
@@ -21,6 +21,11 @@ yargs.command({
             describe: 'note body',
             demandOption: true,
             type: 'string'
+        },
+        time: {
+            describe: 'time slot',
+            demandOption: true,
+            type: 'int'
         }
     },
     handler: function (argv) {
