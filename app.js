@@ -20,10 +20,10 @@ yargs.command({
             demandOption: true,
             type: 'string'
         },
-        body: {
-            describe: 'note body',
+        time: {
+            describe: 'reserved time in hours',
             demandOption: true,
-            type: 'string'
+            type: 'int'
         },
         day: {
             describe: 'time slot',

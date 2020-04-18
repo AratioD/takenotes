@@ -13,7 +13,7 @@ const addNote = function (title, body, day, month, year) {
     if (duplicateNotes.length === 0) {
         notes.push({
             title: title,
-            body: body,
+            time: time,
             day: day,
             month: month,
             year: year
