@@ -4,16 +4,18 @@ const getNotes = function () {
     return 'my notes areee'
 }
 
-const addNote = function (title, body, day, month, year) {
+const addNote = function (title, time, startTime, day, month, year) {
     const notes = loadNotes()
+    
     const duplicateNotes = notes.filter(function (note) {
-        return note.title === title
+        return note.startTime === startTime
     })
 
     if (duplicateNotes.length === 0) {
         notes.push({
             title: title,
             time: time,
+            startTime: startTime,
             day: day,
             month: month,
             year: year

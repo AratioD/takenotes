@@ -23,7 +23,12 @@ yargs.command({
         time: {
             describe: 'reserved time in hours',
             demandOption: true,
-            type: 'int'
+            type: 'float'
+        },
+        startTime: {
+            describe: 'start time',
+            demandOption: true,
+            type: 'float'
         },
         day: {
             describe: 'time slot',
@@ -31,18 +36,18 @@ yargs.command({
             type: 'int'
         },
         month: {
-            describe: 'time slot',
+            describe: 'mont',
             demandOption: true,
             type: 'int'
         },
         year: {
-            describe: 'time slot',
+            describe: 'year',
             demandOption: true,
             type: 'int'
         }
     },
     handler: function (argv) {
-        notes.addNote(argv.title, argv.body, argv.day, argv.month, argv.year)
+        notes.addNote(argv.title, argv.time, argv.startTime, argv.day, argv.month, argv.year)
     }
 })
 
