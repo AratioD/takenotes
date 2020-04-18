@@ -4,7 +4,7 @@ const getNotes = function () {
     return 'my notes areee'
 }
 
-const addNote = function (title, body) {
+const addNote = function (title, body, day, month, year) {
     const notes = loadNotes()
     const duplicateNotes = notes.filter(function (note) {
         return note.title === title
@@ -13,7 +13,10 @@ const addNote = function (title, body) {
     if (duplicateNotes.length === 0) {
         notes.push({
             title: title,
-            body: body
+            body: body,
+            day: day,
+            month: month,
+            year: year
         })
         console.log(notes)
         saveNotes(notes)
