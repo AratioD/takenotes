@@ -36,7 +36,7 @@ yargs.command({
             type: 'int'
         },
         month: {
-            describe: 'mont',
+            describe: 'month',
             demandOption: true,
             type: 'int'
         },
@@ -48,6 +48,25 @@ yargs.command({
     },
     handler: function (argv) {
         notes.addNote(argv.title, argv.time, argv.startTime, argv.day, argv.month, argv.year)
+    }
+})
+
+
+
+// Read the command
+yargs.command({
+    command: 'read',
+    describe: 'read data',
+    builder: {
+        title: {
+            describe: 'list notes text',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function (argv) {
+        const print = notes.loadNotes(argv.title)
+        console.log(print)
     }
 })
 
@@ -85,22 +104,6 @@ yargs.command({
 //     },
 //     handler: function () {
 //         console.log('Print the list' + yargs.title)
-//     }
-// })
-
-// // Read the command
-// yargs.command({
-//     command: 'read',
-//     describe: 'read data',
-//     builder: {
-//         title: {
-//             describe: 'list notes text',
-//             demandOption: true,
-//             type: 'string'
-//         }
-//     },
-//     handler: function () {
-//         console.log('Reading data' + yargs.title)
 //     }
 // })
 
