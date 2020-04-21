@@ -37,15 +37,16 @@ const saveNotes = function (notes) {
 }
 
 
-const loadNotes = function (title) {
+const loadNotes = function (keyword) {
 
     // try {
     const dataBuffer = fs.readFileSync('notes.json')
     const dataJSON = dataBuffer.toString()
-    return JSON.parse(dataJSON)
+    // return JSON.parse(dataJSON)
     // } catch (e) {
     // return []
     // }
+
 
 }
 
