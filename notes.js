@@ -21,7 +21,19 @@ const addNote = function (title, body) {
     } else {
         console.log('Note title taken! Please provide a new one!')
     }
+}
 
+const removeNote = function (title) {
+    const notes = loadNotes()
+    const remove = notes.filter(function (note) {
+        return note.title === title
+    })
+
+    if (remove.length === 0) {
+        console.log('NO this kind of noteadded!')
+    } else {
+        console.log('removed')
+    }
 }
 
 const saveNotes = function (notes) {
@@ -46,5 +58,6 @@ const loadNotes = function () {
 //module exports imports these modules to other files use
 module.exports = {
     getNotes: getNotes,
-    addNote: addNote
+    addNote: addNote,
+    removeNote: removeNote
 }
