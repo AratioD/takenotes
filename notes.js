@@ -32,6 +32,10 @@ const removeNote = function (title) {
     if (remove.length === 0) {
         console.log('NO this kind of noteadded!')
     } else {
+
+        notes.remove({
+            title: title,
+        })
         console.log('removed')
     }
 }
