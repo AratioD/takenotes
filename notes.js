@@ -25,19 +25,10 @@ const addNote = function (title, body) {
 
 const removeNote = function (title) {
     const notes = loadNotes()
-    const remove = notes.filter(function (note) {
-        return note.title === title
+    const notesToKeep = notes.filter(function (note) {
+        return note.title !== title
     })
-
-    if (remove.length === 0) {
-        console.log('NO this kind of noteadded!')
-    } else {
-
-        notes.remove({
-            title: title,
-        })
-        console.log('removed')
-    }
+    saveNotes(notesToKeep)
 }
 
 const saveNotes = function (notes) {
