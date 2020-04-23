@@ -32,9 +32,9 @@ const removeNote = function (title) {
     })
 
     if (notes.length > notesToKeep) {
-        console.log(chalk.green('Note removed!'));
+        console.log(chalk.green.inverse('Note removed!'));
     } else {
-        console.log(chalk.red('Note NOT removed!'));
+        console.log(chalk.red.inverse('Note NOT removed!'));
     }
     saveNotes(notesToKeep)
 }
