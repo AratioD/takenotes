@@ -7,12 +7,10 @@ const getNotes = () => {
 
 const addNote = (title, body) => {
     const notes = loadNotes()
-    // const duplicateNotes = notes.filter(function (note) {
-    //     return note.title === title
-    // })
-    const duplicateNotes = notes.filter((note) => note.title === title)
 
-    if (duplicateNotes.length === 0) {
+    const duplicateNote = notes.find((note) => note.title ===title)
+
+    if (!duplicateNote) {
         notes.push({
             title: title,
             body: body
@@ -27,18 +25,13 @@ const addNote = (title, body) => {
 
 const removeNote = (title) => {
     const notes = loadNotes()
-    // const notesToKeep = notes.filter(function (note) {
 
-    //     return note.title !== title
-    // })
     const notesToKeep = notes.filter((note) => note.title !== title)
 
     if (notes.length > notesToKeep.length) {
-        // console.log(chalk.red.inverse('Note NOT removed!'));
            console.log(chalk.green.inverse('Note removed!'));
     } else {
         console.log(chalk.red.inverse('Note NOT removed!'));
-        // console.log(chalk.green.inverse('Note removed!'));
     }
     saveNotes(notesToKeep)
 }
@@ -63,13 +56,10 @@ const loadNotes = () => {
 
 const listNotes = () => {
     const notes = loadNotes()
-
+    console.log(chalk.blue.inverse('YOUR NOTES'))
     const listNotes = notes.forEach(element => {
         console.log(chalk.green.inverse(element.title) + " body--> " + chalk.red.inverse(element.body))
     });
-    // array1.forEach(element => console.log(element));
-  
-
 }
 
 
