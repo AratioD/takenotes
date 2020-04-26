@@ -23,7 +23,7 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: function (argv) {
+    handler(argv) {
         notes.addNote(argv.title, argv.body)
     }
 })
@@ -39,42 +39,42 @@ yargs.command({
             type: 'string'
         },
     },
-    handler: function (argv) {
+    handler(argv) {
         notes.removeNote(argv.title)
     }
 })
 
-// // Print the command
-// yargs.command({
-//     command: 'list',
-//     describe: 'print the note',
-//     builder: {
-//         title: {
-//             describe: 'list notes text',
-//             demandOption: true,
-//             type: 'string'
-//         }
-//     },
-//     handler: function () {
-//         console.log('Print the list' + yargs.title)
-//     }
-// })
+// Print the command
+yargs.command({
+    command: 'list',
+    describe: 'print the note',
+    builder: {
+        title: {
+            describe: 'list notes text',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler() {
+        console.log('Print the list' + yargs.title)
+    }
+})
 
-// // Read the command
-// yargs.command({
-//     command: 'read',
-//     describe: 'read data',
-//     builder: {
-//         title: {
-//             describe: 'list notes text',
-//             demandOption: true,
-//             type: 'string'
-//         }
-//     },
-//     handler: function () {
-//         console.log('Reading data' + yargs.title)
-//     }
-// })
+// Read the command
+yargs.command({
+    command: 'read',
+    describe: 'read data',
+    builder: {
+        title: {
+            describe: 'list notes text',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler() {
+        console.log('Reading data' + yargs.title)
+    }
+})
 
 // add, remove, read, list
 console.log(yargs.argv)
