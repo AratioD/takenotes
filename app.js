@@ -48,15 +48,16 @@ yargs.command({
 yargs.command({
     command: 'list',
     describe: 'print the note',
-    builder: {
-        title: {
-            describe: 'list notes text',
-            demandOption: true,
-            type: 'string'
-        }
-    },
+    // builder: {
+    //     title: {
+    //         describe: 'list notes text',
+    //         demandOption: true,
+    //         type: 'string'
+    //     }
+    // },
     handler() {
-        console.log('Print the list' + yargs.title)
+        // console.log('Print the list' + yargs.title)
+        notes.listNotes()
     }
 })
 

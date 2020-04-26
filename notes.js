@@ -61,10 +61,22 @@ const loadNotes = () => {
 
 }
 
+const listNotes = () => {
+    const notes = loadNotes()
+
+    const listNotes = notes.forEach(element => {
+        console.log(chalk.green.inverse(element.title) + " body--> " + chalk.red.inverse(element.body))
+    });
+    // array1.forEach(element => console.log(element));
+  
+
+}
+
 
 //module exports imports these modules to other files use
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 }
