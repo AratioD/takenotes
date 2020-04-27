@@ -23,13 +23,32 @@ yargs.command({
         time: {
             describe: 'reserved time in hours',
             demandOption: true,
+<<<<<<< HEAD
             type: 'float'
         },
         startTime: {
             describe: 'start time',
+=======
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        notes.addNote(argv.title, argv.body)
+    }
+})
+
+// create remove command
+yargs.command({
+    command: 'remove',
+    describe: 'Remove a note',
+    builder: {
+        title: {
+            describe: 'Removed note text',
+>>>>>>> master
             demandOption: true,
             type: 'float'
         },
+<<<<<<< HEAD
         day: {
             describe: 'time slot',
             demandOption: true,
@@ -48,6 +67,28 @@ yargs.command({
     },
     handler: function (argv) {
         notes.addNote(argv.title, argv.time, argv.startTime, argv.day, argv.month, argv.year)
+=======
+    },
+    handler(argv) {
+        notes.removeNote(argv.title)
+    }
+})
+
+// Print the command
+yargs.command({
+    command: 'list',
+    describe: 'print the note',
+    // builder: {
+    //     title: {
+    //         describe: 'list notes text',
+    //         demandOption: true,
+    //         type: 'string'
+    //     }
+    // },
+    handler() {
+        // console.log('Print the list' + yargs.title)
+        notes.listNotes()
+>>>>>>> master
     }
 })
 
@@ -59,14 +100,19 @@ yargs.command({
     describe: 'read data',
     builder: {
         title: {
-            describe: 'list notes text',
+            describe: 'list text',
             demandOption: true,
             type: 'string'
         }
     },
+<<<<<<< HEAD
     handler: function (argv) {
         const print = notes.loadNotes(argv.title)
         console.log(print)
+=======
+    handler(argv) {
+        notes.readNote(argv.title)
+>>>>>>> master
     }
 })
 
