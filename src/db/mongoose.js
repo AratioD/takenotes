@@ -6,7 +6,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/book-doctor-api'), {
 }
 
 // Doctor profession and time slot
-const User = mongoose.model('Doctor', {
+const Doctor = mongoose.model('Doctor', {
 
     profession: {
         type: String
@@ -19,7 +19,7 @@ const User = mongoose.model('Doctor', {
     }
 })
 
-const test = new DOMRectReadOnly({
+const test = new Doctor({
     profession: 'yleislaakari',
     name: 'simo',
     time: 1
@@ -29,4 +29,4 @@ test.save().then(() => {
     console.log(test)
 }).catch((error) => {
     console.log('error', error)
-))
+})
