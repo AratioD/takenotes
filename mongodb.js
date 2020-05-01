@@ -16,33 +16,67 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         console.log('Unable to connect to database!')
     }
 
-    console.log('Connected correctly!')
     const db = client.db(databaseName)
 
-    // db.collection('users').findOne({ _id: new ObjectID("5ea9cdcd6b35a43fd4d40a3a") }, (error, user) => {
-    //     if (error) {
-    //         return console.log('unable to fetch')
-    //     }
-    //     console.log(user)
+    db.collection('tasks').deleteOne({
+        description: "buy food"
+    }).then((result) => {
+        console.log(result)
+    }).catch((error) => {
+        console.log(error)
+    })
+})
+
+    // db.collection('users').deleteMany({
+    //     age: 23
+    // }).then((result) => {
+    //     console.log(result)
+    // }).catch((error) => {
+    //     console.log(error)
     // })
 
-    db.collection('users').find({age: 23}).toArray((error, users)=>{
-        console.log(users)
-    })
+    // console.log('Connected correctly!')
 
-    db.collection('users').find({age: 23}).count((error, count)=>{
-        console.log(count)
-    })
 
-    db.collection('tasks').findOne({_id: new ObjectID("5ea9d10282d55d3a840cc467")}, (error, task)=>{
-        console.log(task)
-    })
-    
-    db.collection('tasks').find({completed: false}).toArray((error, tasks)=> {
-        console.log(tasks)
-    })
+    // db.collection('tasks').updateMany({
+    //     completed: false
+    // }, {
+    //     $set: {
+    //         completed: true
+    //     }
+    // }).then((result) => {
+    //     console.log(result.modifiedCount)
+    // }).catch((error) => {
+    //     console.log(error)
+    // })
 
-})
+    // const updatePromise = db.collection('users').updateOne({
+    //     _id: new ObjectID("5ea9c308277662324ca9bdcb")
+    // }, {
+    //     $inc: {
+    //         age: 16
+    //     }
+    // })
+
+    // updatePromise.then((result) => {
+    //     console.log(result)
+    // }).catch((error) => {
+    //     console.log(error)
+    // })
+
+    // const updatePromise = db.collection('users').updateOne({
+    //     _id: new ObjectID("5ea9c308277662324ca9bdcb")
+    // }, {
+    //     $inc: {
+    //         age: 16
+    //     }
+    // })
+
+    // updatePromise.then((result) => {
+    //     console.log(result)
+    // }).catch((error) => {
+    //     console.log(error)
+    // })
 
     // db.collection('users').insertOne({
     //     _id: id,
@@ -89,4 +123,27 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     //         return console.log('Unable to insert task')
     //     }
     //     console.log(result.ops)
+    // })
+
+    // // db.collection('users').findOne({ _id: new ObjectID("5ea9cdcd6b35a43fd4d40a3a") }, (error, user) => {
+    // //     if (error) {
+    // //         return console.log('unable to fetch')
+    // //     }
+    // //     console.log(user)
+    // // })
+
+    // db.collection('users').find({age: 23}).toArray((error, users)=>{
+    //     console.log(users)
+    // })
+
+    // db.collection('users').find({age: 23}).count((error, count)=>{
+    //     console.log(count)
+    // })
+
+    // db.collection('tasks').findOne({_id: new ObjectID("5ea9d10282d55d3a840cc467")}, (error, task)=>{
+    //     console.log(task)
+    // })
+
+    // db.collection('tasks').find({completed: false}).toArray((error, tasks)=> {
+    //     console.log(tasks)
     // })
