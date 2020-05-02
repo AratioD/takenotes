@@ -6,7 +6,7 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.json())
-// reserve an appointment to doctor
+// Create an appointment to doctor
 app.post('/doctor', async (req, res) => {
 
     const doctor = new Doctor(req.body)
@@ -31,19 +31,19 @@ app.get('/doctor', async (req, res) => {
 })
 
 
-
 //Find time slots by name 
-app.get('/doctor/:id', (req, res) => {
-
+app.get('/doctor/:id', async (req, res) => {
     const _id = req.params.id
-    Doctor.findById(_id).then((doctor) => {
+
+    try {
+        const doctor = await Doctor.findById(_id)
         if (!doctor) {
             return res.status(404).send()
         }
         res.send(doctor)
-    }).catch((e) => {
+    } catch (error) {
         res.status(500).send()
-    })
+    }
 })
 
 //Fetch a specific doctor all time slots.
