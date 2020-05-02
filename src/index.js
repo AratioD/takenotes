@@ -1,13 +1,14 @@
 const express = require('express')
 require('./db/mongoose')
-const doctor = require('./models/doctor')
+const Doctor = require('./models/doctor')
 
 const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.json())
-
-app.post('/doctors', (req, res) => {
+// reserve an appointment to doctor
+app.post('/doctor', (req, res) => {
+   
     const doctor = new Doctor(req.body)
 
     doctor.save().then(() => {
