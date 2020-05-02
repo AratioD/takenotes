@@ -43,17 +43,17 @@ const Doctor = mongoose.model('Doctor', {
 // })
 
 
-const test = new Doctor({
-    profession: 'puoskari',
-    name: 'veefdfdfdfdfdra',
-    time: 2
-})
+// const test = new Doctor({
+//     profession: 'puoskari',
+//     name: 'veefdfdfdfdfdra',
+//     time: 2
+// })
 
-test.save().then(() => {
-    console.log(test)
-}).catch((error) => {
-    console.log('error', error)
-})
+// test.save().then(() => {
+//     console.log(test)
+// }).catch((error) => {
+//     console.log('error', error)
+// })
 
 
 module.exports = Doctor
