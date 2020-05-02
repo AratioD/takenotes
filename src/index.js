@@ -20,14 +20,16 @@ app.post('/doctor', async (req, res) => {
 })
 
 // Fetch all doctor appointments.
-app.get('/doctor', (req, res) => {
+app.get('/doctor', async (req, res) => {
 
-    Doctor.find({}).then((doctors) => {
+    try {
+        const doctors = await Doctor.find({})
         res.send(doctors)
-    }).catch((e) => {
-        res.status(500).send(e)
-    })
+    } catch (error) {
+        res.status(500).send(error)
+    }
 })
+
 
 
 //Find time slots by name 
