@@ -20,7 +20,7 @@ app.post('/doctor', async (req, res) => {
 })
 
 // Fetch all doctor appointments.
-app.get('/doctor', async (req, res) => {
+app.get('/doctors', async (req, res) => {
 
     try {
         const doctors = await Doctor.find({})
@@ -31,7 +31,7 @@ app.get('/doctor', async (req, res) => {
 })
 
 
-//Find time slots by name 
+//Find time slots by mongoose ID.
 app.get('/doctor/:id', async (req, res) => {
     const _id = req.params.id
 
@@ -47,19 +47,14 @@ app.get('/doctor/:id', async (req, res) => {
 })
 
 //Fetch a specific doctor all time slots.
-app.get('/doctor/name', (req, res) => {
+app.get('/doctorname', async (req, res) => {
 
-    const xx = req.params.id
-
-    Doctor.find(xx).then((doctor) => {
-        if (!doctor) {
-            return res.status(404).send()
-        }
+    try {
+        const doctor = await Doctor.find(req.body)
         res.send(doctor)
-    }).catch((e) => {
-        console.log('req ooo tää', + req)
-        res.status(500).send('req ooo tää', + req)
-    })
+    } catch (error) {
+        res.status(500).send(error)
+    }
 })
 
 app.listen(port, () => {
