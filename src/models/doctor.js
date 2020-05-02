@@ -27,3 +27,32 @@ const Doctor = mongoose.model('Doctor', {
         }
     }
 })
+
+
+module.exports = Doctor
+// // Doctor profession and time slot
+// const Doctor = mongoose.model('Doctor', {
+
+//     profession: {
+//         type: String
+//     },
+//     name: {
+//         type: String
+//     },
+//     time: {
+//         type: Number
+//     }
+// })
+
+
+// const test = new Doctor({
+//     profession: 'yleislaakari',
+//     name: 'jimo',
+//     time: 1
+// })
+
+// test.save().then(() => {
+//     console.log(test)
+// }).catch((error) => {
+//     console.log('error', error)
+// })
