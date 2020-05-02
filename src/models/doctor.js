@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
 // const validator = require('validator')
-// require('.src/db/mongoose')
 
-// Doctor profession and time slot
+// Model for a doctor profession and time slot
 const Doctor = mongoose.model('Doctor', {
 
     profession: {
@@ -27,6 +26,5 @@ const Doctor = mongoose.model('Doctor', {
         }
     }
 })
-
 
 module.exports = Doctor
