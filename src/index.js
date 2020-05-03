@@ -47,7 +47,24 @@ app.get('/doctor/:id', async (req, res) => {
 })
 
 //Fetch a specific doctor all time slots.
-app.get('/doctorname', async (req, res) => {
+app.get('/search', async (req, res) => {
+    try {
+        const doctor = await Doctor.find(req.body)
+
+        const name = req.body
+        if (doctor.length == 0) {
+            res.send("No such a name: " + req.body.name)
+        }
+
+        res.send(doctor)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
+
+
+//Sort by profession
+app.get('/doctortype', async (req, res) => {
     try {
         const doctor = await Doctor.find(req.body)
 
