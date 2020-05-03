@@ -78,7 +78,7 @@ app.delete('/remove/:id', async (req, res) => {
 })
 
 // Update doctor appointment
-app.patch('/update/:id', async (req, res) => {
+app.patch('/doctorupdate/:id', async (req, res) => {
     const _id = req.params.id
     const updates = Object.keys(req.body)
     const allowedUpdates = ['profession', 'name', 'time']
@@ -99,6 +99,30 @@ app.patch('/update/:id', async (req, res) => {
         res.status(400).send(e + " " + req.params.id + " " + req.body)
     }
 })
+
+// Update doctor appointment
+app.put('/updateall/:id', async (req, res) => {
+    const _id = req.params.id
+    const updates = Object.keys(req.body)
+    const allowedUpdates = ['profession', 'name', 'time']
+    const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
+
+    if (!isValidOperation) {
+        return res.status(400).send({ error: 'Invalid updates!' })
+    }
+
+    try {
+        const doctor = await Doctor.findByIdAndUpdate({ "_id": (_id) }, req.body, { new: true, runValidators: true })
+        if (!doctor) {
+            return res.status(404).send()
+        }
+
+        res.send(req.body)
+    } catch (e) {
+        res.status(400).send(e + " " + req.params.id + " " + req.body)
+    }
+})
+
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
