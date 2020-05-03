@@ -1,5 +1,5 @@
 # Doctor reservation demo app
-demo application to take notes
+A demo application to simulate time reservation program.
 
 # Create an appointment
 http://localhost:3000/doctor
