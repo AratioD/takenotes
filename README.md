@@ -7,6 +7,12 @@ http://localhost:3000/doctor
 # Get a list
 http://localhost:3000/doctor/
 
+# Search by keyword
+http://localhost:3000/search
+"profession": "cardiologist",
+"name": "mike",
+"time": 1,
+
 # Get a one user
 http://localhost:3000/doctor/ --> id "5eadae542a2304046c8c10af"
 
