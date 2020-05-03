@@ -73,7 +73,30 @@ app.delete('/remove/:id', async (req, res) => {
         }
         res.send("Succesfully deleted -->" + _id)
     } catch (error) {
-        res.status(500).send(error + " " + " " + _id)
+        res.status(500).send(error + " " + _id)
+    }
+})
+
+// Update doctor appointment
+app.patch('/doctorupdate/:id', async (req, res) => {
+    const updates = Object.keys(req.body)
+    const allowedUpdates = ['profession', 'name', 'time']
+    const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
+
+    if (!isValidOperation) {
+        return res.status(400).send({ error: 'Invalid updates!' })
+    }
+
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+    
+        if (!user) {
+            return res.status(404).send()
+        }
+
+        res.send(user)
+    } catch (e) {
+        res.status(400).send(e)
     }
 })
 
