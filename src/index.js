@@ -38,7 +38,7 @@ app.get('/doctor/:id', async (req, res) => {
     try {
         const doctor = await Doctor.findById(_id)
         if (!doctor) {
-            return res.status(404).send("not found user by following id --> " + _id)
+            return res.status(404).send("not found doctor by following id --> " + _id)
         }
         res.send(doctor)
     } catch (error) {
@@ -88,15 +88,15 @@ app.patch('/doctorupdate/:id', async (req, res) => {
     }
 
     try {
-        const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+        const doctor = await Doctor.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
     
-        if (!user) {
+        if (!doctor) {
             return res.status(404).send()
         }
 
-        res.send(user)
+        res.send(doctor)
     } catch (e) {
-        res.status(400).send(e)
+        res.status(400).send(e + " " + req.params.id + " "+ req.body)
     }
 })
 
