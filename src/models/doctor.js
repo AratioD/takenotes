@@ -1,8 +1,8 @@
-const mongoose = require('mongoose')
-// const validator = require('validator')
+const mongoose = require('mongoose')   
 
 // Model for a doctor profession and time slot
 const Doctor = mongoose.model('Doctor', {
+
 
     profession: {
         type: String,
