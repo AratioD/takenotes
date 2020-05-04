@@ -1,19 +1,19 @@
 const express = require('express')
 require('./db/mongoose')
-const Doctor = require('./models/manual')
+const Manual = require('./models/manual')
 
 const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.json())
 // Create an appointment to doctor
-app.post('/doctor', async (req, res) => {
+app.post('/manual', async (req, res) => {
 
-    const doctor = new Doctor(req.body)
+    const manual = new Manual(req.body)
 
     try {
-        await doctor.save()
-        res.status(201).send(doctor)
+        await manual.save()
+        res.status(201).send(manual)
     } catch (e) {
         res.status(400).send(e)
     }
