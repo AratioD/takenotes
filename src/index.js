@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000
 
 app.use(express.json())
 // Create an appointment to doctor
-app.post('/manual', async (req, res) => {
+app.post('/ticket', async (req, res) => {
 
     const manual = new Manual(req.body)
 

@@ -7,8 +7,12 @@ const Manual = mongoose.model('Manual', {
     urgency: {
         type: String, enum: ['high', 'middle', 'low'],
         require: true,
-        trim: true
-
+        trim: true,
+        validate(value) {
+            if ((value !== 'high') || (value !== 'middle') || (value !== 'low') ) {
+                throw new Error('ERROR! INVALID URGENCY VALUE!')
+            }
+        }
     },
     name: {
         type: String,
