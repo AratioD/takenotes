@@ -1,4 +1,7 @@
 # To run a ticket book
+steps to run program
+git clone https://github.com/AratioD/takenotes/tree/maintenancebook
+npm install
 npm run dev
 
 # Create a new ticket
