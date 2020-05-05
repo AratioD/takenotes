@@ -4,6 +4,14 @@ const mongoose = require('mongoose')
 const Manual = mongoose.model('Manual', {
 
 
+    time : { type : Date, default: Date.now },
+
+    status: {
+        type: String, enum: ['open', 'closed'],
+        require: true,
+        trim: true,
+    },
+
     urgency: {
         type: String, enum: ['high', 'middle', 'low'],
         require: true,
@@ -11,27 +19,27 @@ const Manual = mongoose.model('Manual', {
     },
 
     device: {
-        type: String, enum: ['pump', 'excavator', 'pipe', 'filters', 'valves', 'vessel', 'heat exchanger', 'generator', 'electrical equipment', 'other'],
+        type: String, enum: ['pump', 'excavator', 'pipe', 'filters', 'valve', 'vessel', 'heat exchanger', 'generator', 'electrical equipment', 'other'],
         require: true,
         trim: true
     },
 
-    name: {
+    description: {
         type: String,
         require: true,
         trim: true,
         lowercase: true,
     },
 
-    time: {
-        type: Number,
-        require: true,
-        validate(value) {
-            if (value < 0) {
-                throw new Error('Time slot cannot be negative')
-            }
-        }
-    }
+    // time: {
+    //     type: Number,
+    //     require: true,
+    //     validate(value) {
+    //         if (value < 0) {
+    //             throw new Error('Time slot cannot be negative')
+    //         }
+    //     }
+    // }
 })
 
 module.exports = Manual
