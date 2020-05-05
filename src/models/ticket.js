@@ -1,13 +1,7 @@
 const mongoose = require('mongoose')
 
 // Model for creating a industrial ticket to service system.
-const Ticket = mongoose.model('Ticket', {
-
-
-    time: { type: Date, default: Date.now },
-    // {
-    //     timestamps: true,
-    // },
+const ticketSchema = new mongoose.Schema({
 
     status: {
         type: String, enum: ['open', 'closed'],
@@ -40,7 +34,12 @@ const Ticket = mongoose.model('Ticket', {
         trim: true,
         lowercase: true,
 
-    }, 
+    }
+}, {
+    timestamps: true
 })
+
+
+const Ticket = mongoose.model('Ticket', ticketSchema)
 
 module.exports = Ticket
