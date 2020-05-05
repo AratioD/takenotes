@@ -16,7 +16,7 @@ An example of RAW JSON input by Postman
 	"device": "other",
 	"description": "slippery floor",
 	"worker": "simo putkimies"
-}
+}<br/>
 
 
 # Get all tickets
