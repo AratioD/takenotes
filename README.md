@@ -9,14 +9,14 @@ npm run dev<br/>
 http://localhost:3000/ticket
 
 An example of RAW JSON input by Postman
-
-{<br/>
+<br/>
+{
 	"status": "open",
 	"urgency": "high",
 	"device": "other",
 	"description": "slippery floor",
 	"worker": "simo putkimies"
-}<br/>
+}
 
 
 # Get all tickets
