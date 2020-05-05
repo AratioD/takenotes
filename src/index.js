@@ -38,29 +38,29 @@ app.get('/ticket/:id', async (req, res) => {
     try {
         const ticket = await Ticket.findById(_id)
         if (!ticket) {
-            return res.status(404).send("not found a ticket by following ID --> " + _id)
+            return res.status(404).send("ERROR NO TICKET FOUND --> " + _id)
         }
         res.send(ticket)
     } catch (error) {
-        res.status(500).send(error)
+        res.status(500).send("ERROR NO TICKET FOUND --> " + _id)
     }
 })
 
-// //Fetch a specific ticket all time slots.
-// app.get('/search', async (req, res) => {
-//     try {
-//         const ticket = await ticket.find(req.body)
+//Fetch a specific ticket all time slots.
+app.get('/search', async (req, res) => {
+    try {
+        const ticket = await Ticket.find(req.body)
 
-//         const name = req.body
-//         if (ticket.length == 0) {
-//             res.send("No such a name: " + req.body.name)
-//         }
+        const name = req.body
+        if (ticket.length == 0) {
+            res.send("ERROR! NO FOUND SEARCH KEY.")
+        }
 
-//         res.send(ticket)
-//     } catch (error) {
-//         res.status(500).send(error)
-//     }
-// })
+        res.send(ticket)
+    } catch (error) {
+        res.status(500).send("ERROR! NO FOUND SEARCH KEY." + error)
+    }
+})
 
 
 // //Sort by profession
