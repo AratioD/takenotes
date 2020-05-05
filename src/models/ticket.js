@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-// Model for a Ticket profession and time slot
+// Model for creating a industrial ticket to service system.
 const Ticket = mongoose.model('Ticket', {
 
 
