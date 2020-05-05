@@ -1,6 +1,6 @@
 const express = require('express')
 require('./db/mongoose')
-const Manual = require('./models/manual')
+const Ticket = require('./models/ticket')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -9,26 +9,26 @@ app.use(express.json())
 // Create an appointment to doctor
 app.post('/ticket', async (req, res) => {
 
-    const manual = new Manual(req.body)
+    const ticket = new Ticket(req.body)
 
     try {
-        await manual.save()
-        res.status(201).send(manual)
+        await ticket.save()
+        res.status(201).send(ticket)
     } catch (e) {
         res.status(400).send(e)
     }
 })
 
-// // Fetch all doctor appointments.
-// app.get('/doctors', async (req, res) => {
+// Fetch all doctor appointments.
+app.get('/alltickects', async (req, res) => {
 
-//     try {
-//         const doctors = await Doctor.find({})
-//         res.send(doctors)
-//     } catch (error) {
-//         res.status(500).send(error)
-//     }
-// })
+    try {
+        const tickets = await Ticket.find({})
+        res.send(doctors)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
 
 
 // //Find time slots by mongoose ID.

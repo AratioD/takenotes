@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
-// Model for a Manual profession and time slot
-const Manual = mongoose.model('Manual', {
+// Model for a Ticket profession and time slot
+const Ticket = mongoose.model('Ticket', {
 
 
     time: { type: Date, default: Date.now },
@@ -40,4 +40,4 @@ const Manual = mongoose.model('Manual', {
     },
 })
 
-module.exports = Manual
+module.exports = Ticket
