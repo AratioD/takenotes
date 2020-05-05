@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const Manual = mongoose.model('Manual', {
 
 
-    time : { type : Date, default: Date.now },
+    time: { type: Date, default: Date.now },
 
     status: {
         type: String, enum: ['open', 'closed'],
@@ -31,15 +31,13 @@ const Manual = mongoose.model('Manual', {
         lowercase: true,
     },
 
-    // time: {
-    //     type: Number,
-    //     require: true,
-    //     validate(value) {
-    //         if (value < 0) {
-    //             throw new Error('Time slot cannot be negative')
-    //         }
-    //     }
-    // }
+    worker: {
+        type: String,
+        require: true,
+        trim: true,
+        lowercase: true,
+
+    },
 })
 
 module.exports = Manual
