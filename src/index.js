@@ -45,22 +45,55 @@ app.get('/ticket/:id', async (req, res) => {
         res.status(500).send("ERROR NO TICKET FOUND --> " + _id)
     }
 })
-
 //Fetch a specific ticket all time slots.
-app.get('/search', async (req, res) => {
-    try {
-        const ticket = await Ticket.find(req.body)
+// app.get('/search', async (req, res) => {
 
-        const name = req.body
-        if (ticket.length == 0) {
-            res.send("ERROR! NO FOUND SEARCH KEY.")
-        }
+//     const match = {}
+//     const sort = {}
 
-        res.send(ticket)
-    } catch (error) {
-        res.status(500).send("ERROR! NO FOUND SEARCH KEY." + error)
-    }
-})
+//     if (req.query.status) {
+//         match.status = req.query.status === 'closed'
+//     }
+
+//     const match = {}
+//     try {
+//         // const ticket = await Ticket.find(req.body).sort({time: 'ascending'})
+//         const ticket = await Ticket.find(req.body).populate({
+//             path: 'search',
+//             match,
+//             options: {
+//                 sort: {
+//                     urgency: -1
+//                 }
+//             }
+//         })
+//         const name = req.body
+//         if (ticket.length == 0) {
+//             res.send("ERROR! NO FOUND SEARCH KEY.")
+//         }
+
+//         res.send(ticket)
+//     } catch (error) {
+//         res.status(500).send("ERROR! NO FOUND SEARCH KEY." + error)
+//     }
+// })
+
+
+// //Fetch a specific ticket all time slots.
+// app.get('/search', async (req, res) => {
+//     try {
+//         // const ticket = await Ticket.find(req.body).sort({time: 'ascending'})
+//         const ticket = await Ticket.find(req.body).sort({time: -1})
+//         const name = req.body
+//         if (ticket.length == 0) {
+//             res.send("ERROR! NO FOUND SEARCH KEY.")
+//         }
+
+//         res.send(ticket)
+//     } catch (error) {
+//         res.status(500).send("ERROR! NO FOUND SEARCH KEY." + error)
+//     }
+// })
 
 
 // //Sort by profession

@@ -5,6 +5,9 @@ const Ticket = mongoose.model('Ticket', {
 
 
     time: { type: Date, default: Date.now },
+    // {
+    //     timestamps: true,
+    // },
 
     status: {
         type: String, enum: ['open', 'closed'],
@@ -37,7 +40,7 @@ const Ticket = mongoose.model('Ticket', {
         trim: true,
         lowercase: true,
 
-    },
+    }, 
 })
 
 module.exports = Ticket
