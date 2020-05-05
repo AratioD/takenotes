@@ -6,7 +6,7 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.json())
-// Create an appointment to doctor
+// Create an appointment to ticket
 app.post('/ticket', async (req, res) => {
 
     const ticket = new Ticket(req.body)
@@ -19,7 +19,7 @@ app.post('/ticket', async (req, res) => {
     }
 })
 
-// Fetch all doctor appointments.
+// Fetch all tickets depending closed or not
 app.get('/alltickects', async (req, res) => {
 
     try {
@@ -31,32 +31,32 @@ app.get('/alltickects', async (req, res) => {
 })
 
 
-// //Find time slots by mongoose ID.
-// app.get('/doctor/:id', async (req, res) => {
-//     const _id = req.params.id
+// Find a specific ticket by ID
+app.get('/ticket/:id', async (req, res) => {
+    const _id = req.params.id
 
-//     try {
-//         const doctor = await Doctor.findById(_id)
-//         if (!doctor) {
-//             return res.status(404).send("not found doctor by following id --> " + _id)
-//         }
-//         res.send(doctor)
-//     } catch (error) {
-//         res.status(500).send(error)
-//     }
-// })
+    try {
+        const ticket = await Ticket.findById(_id)
+        if (!ticket) {
+            return res.status(404).send("not found a ticket by following ID --> " + _id)
+        }
+        res.send(ticket)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
 
-// //Fetch a specific doctor all time slots.
+// //Fetch a specific ticket all time slots.
 // app.get('/search', async (req, res) => {
 //     try {
-//         const doctor = await Doctor.find(req.body)
+//         const ticket = await ticket.find(req.body)
 
 //         const name = req.body
-//         if (doctor.length == 0) {
+//         if (ticket.length == 0) {
 //             res.send("No such a name: " + req.body.name)
 //         }
 
-//         res.send(doctor)
+//         res.send(ticket)
 //     } catch (error) {
 //         res.status(500).send(error)
 //     }
@@ -64,16 +64,16 @@ app.get('/alltickects', async (req, res) => {
 
 
 // //Sort by profession
-// app.get('/doctortype', async (req, res) => {
+// app.get('/tickettype', async (req, res) => {
 //     try {
-//         const doctor = await Doctor.find(req.body)
+//         const ticket = await ticket.find(req.body)
 
 //         const name = req.body
-//         if (doctor.length == 0) {
+//         if (ticket.length == 0) {
 //             res.send("No such a name: " + req.body.name)
 //         }
 
-//         res.send(doctor)
+//         res.send(ticket)
 //     } catch (error) {
 //         res.status(500).send(error)
 //     }
@@ -84,8 +84,8 @@ app.get('/alltickects', async (req, res) => {
 //     const _id = req.params.id
 
 //     try {
-//         const doctor = await Doctor.deleteOne({ "_id": (_id) })
-//         if (!doctor) {
+//         const ticket = await ticket.deleteOne({ "_id": (_id) })
+//         if (!ticket) {
 //             return res.status(404).send(_id)
 //         }
 //         res.send("Succesfully deleted -->" + _id)
@@ -94,8 +94,8 @@ app.get('/alltickects', async (req, res) => {
 //     }
 // })
 
-// // Update doctor appointment
-// app.patch('/doctorupdate/:id', async (req, res) => {
+// // Update ticket appointment
+// app.patch('/ticketupdate/:id', async (req, res) => {
 //     const _id = req.params.id
 //     const updates = Object.keys(req.body)
 //     const allowedUpdates = ['profession', 'name', 'time']
@@ -106,8 +106,8 @@ app.get('/alltickects', async (req, res) => {
 //     }
 
 //     try {
-//         const doctor = await Doctor.findByIdAndUpdate({ "_id": (_id) }, req.body, { new: true, runValidators: true })
-//         if (!doctor) {
+//         const ticket = await ticket.findByIdAndUpdate({ "_id": (_id) }, req.body, { new: true, runValidators: true })
+//         if (!ticket) {
 //             return res.status(404).send()
 //         }
 
@@ -117,7 +117,7 @@ app.get('/alltickects', async (req, res) => {
 //     }
 // })
 
-// // Update doctor appointment
+// // Update ticket appointment
 // app.put('/updateall/:id', async (req, res) => {
 //     const _id = req.params.id
 //     const updates = Object.keys(req.body)
@@ -129,8 +129,8 @@ app.get('/alltickects', async (req, res) => {
 //     }
 
 //     try {
-//         const doctor = await Doctor.findByIdAndUpdate({ "_id": (_id) }, req.body, { new: true, runValidators: true })
-//         if (!doctor) {
+//         const ticket = await ticket.findByIdAndUpdate({ "_id": (_id) }, req.body, { new: true, runValidators: true })
+//         if (!ticket) {
 //             return res.status(404).send()
 //         }
 
