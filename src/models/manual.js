@@ -8,25 +8,12 @@ const Manual = mongoose.model('Manual', {
         type: String, enum: ['high', 'middle', 'low'],
         require: true,
         trim: true,
-        validate(value) {
-            if ((value !== 'high') || (value !== 'middle') || (value !== 'low')) {
-                throw new Error('ERROR! INVALID URGENCY VALUE!')
-            }
-        }
     },
+
     device: {
         type: String, enum: ['pump', 'excavator', 'pipe', 'filters', 'valves', 'vessel', 'heat exchanger', 'generator', 'electrical equipment', 'other'],
         require: true,
-        trim: true,
-        validate(value) {
-            if ((value !== 'pump') || (value !== 'excavator') ||
-                (value !== 'pipe') || (value !== 'filters') || 
-                (value !== 'valves') || (value !== 'vessel') || 
-                (value !== 'heat exchanger') || (value !== 'generator')|| 
-                (value !== 'electrical equipment') || (value !== 'other')) {
-                throw new Error('ERROR! INVALID URGENCY VALUE!')
-            }
-        }
+        trim: true
     },
 
     name: {
@@ -35,6 +22,7 @@ const Manual = mongoose.model('Manual', {
         trim: true,
         lowercase: true,
     },
+
     time: {
         type: Number,
         require: true,
