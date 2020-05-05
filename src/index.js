@@ -24,7 +24,7 @@ app.get('/alltickects', async (req, res) => {
 
     try {
         const tickets = await Ticket.find({})
-        res.send(doctors)
+        res.send(tickets)
     } catch (error) {
         res.status(500).send(error)
     }

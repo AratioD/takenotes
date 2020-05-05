@@ -1,13 +1,26 @@
-# To run maintenance book
+# To run a ticket book
 npm run dev
 
-# Doctor reservation demo app
+# Create a new ticket
 
-A demo application to simulate time reservation program.
+http://localhost:3000/ticket
 
-# Create an appointment
+An example of RAW JSON input by Postman
 
-http://localhost:3000/doctor
+{
+	"status": "open",
+	"urgency": "high",
+	"device": "other",
+	"description": "slippery floor",
+	"worker": "simo putkimies"
+}
+
+
+# Get all tickets
+
+http://localhost:3000/alltickects
+
+Post an empty postman  com
 
 # Get a list
 
