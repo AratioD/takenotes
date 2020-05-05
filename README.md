@@ -1,5 +1,5 @@
 # To run a ticket book
-steps to run program <br/>
+steps to run a program <br/>
 git clone https://github.com/AratioD/takenotes/tree/maintenancebook <br/>
 npm install<br/>
 npm run dev<br/>
@@ -23,7 +23,7 @@ An example of RAW JSON input by Postman
 
 http://localhost:3000/alltickects
 
-Post an empty postman  com
+Post an empty postman  
 
 # Get a list
 
