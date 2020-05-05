@@ -3,6 +3,9 @@ steps to run a program <br/>
 git clone https://github.com/AratioD/takenotes/tree/maintenancebook <br/>
 npm install<br/>
 npm run dev<br/>
+download https://www.postman.com/ <br/>
+Please take prepared postman JSON file from the repository for testing <br/>
+
 
 # Create a new ticket
 
