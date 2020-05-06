@@ -1,14 +1,18 @@
 const express = require('express')
+const Ticket = require('../models/ticket')
 const router = new express.Router()
 
-router.get('/test', (req,res)=> {
-    res.send('testing 4 wwwwwever')
+
+
+
+router.get('/test', (req, res) => {
+    res.send('testing 4 wwwwwdfdfdfever')
 })
 // Create a service to ticket
 router.post('/ticket', async (req, res) => {
-
+    debugger
     const ticket = new Ticket(req.body)
-
+    // res.status(201).send(ticket)
     try {
         await ticket.save()
         res.status(201).send(ticket)
@@ -18,7 +22,7 @@ router.post('/ticket', async (req, res) => {
 })
 
 // Fetch all tickets depending closed or not
-router.get('/alltickects', async (req, res) => {
+router.get('/all', async (req, res) => {
 
     try {
         const tickets = await Ticket.find({})
@@ -92,20 +96,20 @@ router.get('/alltickects', async (req, res) => {
 //     res.send('ssss')
 
 //     // if (req.query.urgency) {
-    //     match.urgency = req.query.urgency === 'high'
-    // }
+//     match.urgency = req.query.urgency === 'high'
+// }
 
-    // try {
-    //     await req.user.populate({
-    //         path: 'search',
-    //         match: {
-    //             urgency: 'high'
-    //         }
-    //     }).execPopulate()
-    //     res.send(req.user.tasks)
-    // } catch (e) {
-    //     res.status(500).send()
-    // }
+// try {
+//     await req.user.populate({
+//         path: 'search',
+//         match: {
+//             urgency: 'high'
+//         }
+//     }).execPopulate()
+//     res.send(req.user.tasks)
+// } catch (e) {
+//     res.status(500).send()
+// }
 // })
 
 // //Fetch a specific ticket all time slots.
