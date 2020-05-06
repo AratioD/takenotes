@@ -1,12 +1,13 @@
 const express = require('express')
 require('./db/mongoose')
 const Ticket = require('./models/ticket')
+const router = new express.Router()
 
 const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.json())
-// Create an appointment to ticket
+// Create a service to ticket
 app.post('/ticket', async (req, res) => {
 
     const ticket = new Ticket(req.body)
@@ -31,52 +32,58 @@ app.get('/alltickects', async (req, res) => {
 })
 
 
-// Find a specific ticket by ID
-app.get('/ticket/:id', async (req, res) => {
-    const _id = req.params.id
+// // Find a specific ticket by ID
+// app.get('/ticket/:id', async (req, res) => {
+//     const _id = req.params.id
 
-    try {
-        const ticket = await Ticket.findById(_id)
-        if (!ticket) {
-            return res.status(404).send("ERROR NO TICKET FOUND --> " + _id)
-        }
-        res.send(ticket)
-    } catch (error) {
-        res.status(500).send("ERROR NO TICKET FOUND --> " + _id)
-    }
-})
-//Fetch a specific ticket all time slots.
-// app.get('/search', async (req, res) => {
-
-//     const match = {}
-//     const sort = {}
-
-//     if (req.query.status) {
-//         match.status = req.query.status === 'closed'
-//     }
-
-//     const match = {}
 //     try {
-//         // const ticket = await Ticket.find(req.body).sort({time: 'ascending'})
-//         const ticket = await Ticket.find(req.body).populate({
-//             path: 'search',
-//             match,
-//             options: {
-//                 sort: {
-//                     urgency: -1
-//                 }
-//             }
-//         })
-//         const name = req.body
-//         if (ticket.length == 0) {
-//             res.send("ERROR! NO FOUND SEARCH KEY.")
+//         const ticket = await Ticket.findById(_id)
+//         if (!ticket) {
+//             return res.status(404).send("ERROR NO TICKET FOUND --> " + _id)
 //         }
-
 //         res.send(ticket)
 //     } catch (error) {
-//         res.status(500).send("ERROR! NO FOUND SEARCH KEY." + error)
+//         res.status(500).send("ERROR NO TICKET FOUND --> " + _id)
 //     }
 // })
+// Fetch a specific ticket all time slots.
+router.app.get('/search', async (req, res) => {
+
+    const match = {}
+    // const sort = {}
+
+    if (req.query.status) {
+        match.status = req.query.status === 'closed'
+    }
+
+    try {
+        // const ticket = await Ticket.find(req.body).sort({time: 'ascending'})
+        await req.populate({
+            path: 'search',
+            match: {
+                urgency: 'high'
+            }
+
+        }).execPopulate()
+        res.send(req.user.tasks)
+           
+        //     match,
+            options: {
+                sort: {
+                    urgency: -1
+                }
+            }
+        })
+        const name = req.body
+        if (ticket.length == 0) {
+            res.send("ERROR! NO FOUND SEARCH KEY.")
+        }
+
+        res.send(ticket)
+    } catch (error) {
+        res.status(500).send("ERROR! NO FOUND SEARCH KEY." + error)
+    }
+})
 
 
 // //Fetch a specific ticket all time slots.
@@ -96,7 +103,7 @@ app.get('/ticket/:id', async (req, res) => {
 // })
 
 
-// //Sort by profession
+//Sort by profession
 // app.get('/tickettype', async (req, res) => {
 //     try {
 //         const ticket = await ticket.find(req.body)
