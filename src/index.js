@@ -3,10 +3,20 @@ require('./db/mongoose')
 const Ticket = require('./models/ticket')
 const router = new express.Router()
 
+
+
 const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.json())
+
+
+router.get('/test', (req, res) => {
+    res.send('jihuuu this works')
+})
+
+app.use(router)
+
 // Create a service to ticket
 app.post('/ticket', async (req, res) => {
 
@@ -47,44 +57,69 @@ app.get('/alltickects', async (req, res) => {
 //     }
 // })
 // Fetch a specific ticket all time slots.
-router.app.get('/search', async (req, res) => {
+// router.app.get('/search', async (req, res) => {
 
+//     const match = {}
+//     // const sort = {}
+
+//     if (req.query.status) {
+//         match.status = req.query.status === 'closed'
+//     }
+
+//     try {
+//         // const ticket = await Ticket.find(req.body).sort({time: 'ascending'})
+//         await req.populate({
+//             path: 'search',
+//             match: {
+//                 urgency: 'high'
+//             }
+
+//         }).execPopulate()
+//         res.send(req.user.tasks)
+
+//         //     match,
+//             options: {
+//                 sort: {
+//                     urgency: -1
+//                 }
+//             }
+//         })
+//         const name = req.body
+//         if (ticket.length == 0) {
+//             res.send("ERROR! NO FOUND SEARCH KEY.")
+//         }
+
+//         res.send(ticket)
+//     } catch (error) {
+//         res.status(500).send("ERROR! NO FOUND SEARCH KEY." + error)
+//     }
+// })
+
+
+
+// GET /tasks?completed=true
+// GET /tasks?limit=10&skip=20
+app.get('/search', async (req, res) => {
     const match = {}
-    // const sort = {}
+    debugger
+    res.send('ssss')
 
-    if (req.query.status) {
-        match.status = req.query.status === 'closed'
-    }
+    // if (req.query.urgency) {
+    //     match.urgency = req.query.urgency === 'high'
+    // }
 
-    try {
-        // const ticket = await Ticket.find(req.body).sort({time: 'ascending'})
-        await req.populate({
-            path: 'search',
-            match: {
-                urgency: 'high'
-            }
-
-        }).execPopulate()
-        res.send(req.user.tasks)
-           
-        //     match,
-            options: {
-                sort: {
-                    urgency: -1
-                }
-            }
-        })
-        const name = req.body
-        if (ticket.length == 0) {
-            res.send("ERROR! NO FOUND SEARCH KEY.")
-        }
-
-        res.send(ticket)
-    } catch (error) {
-        res.status(500).send("ERROR! NO FOUND SEARCH KEY." + error)
-    }
+    // try {
+    //     await req.user.populate({
+    //         path: 'search',
+    //         match: {
+    //             urgency: 'high'
+    //         }
+    //     }).execPopulate()
+    //     res.send(req.user.tasks)
+    // } catch (e) {
+    //     res.status(500).send()
+    // }
 })
-
 
 // //Fetch a specific ticket all time slots.
 // app.get('/search', async (req, res) => {
