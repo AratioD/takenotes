@@ -4,11 +4,10 @@ git clone https://github.com/AratioD/takenotes/tree/maintenancebook <br/>
 npm install<br/>
 npm run dev<br/>
 download https://www.postman.com/ <br/>
-Please take prepared postman JSON file from the repository for testing <br/>
+Please see Postman's setting file in the repository.<br/>
 
 
 # Create a new ticket
-
 http://localhost:3000/ticket
 
 An example of RAW JSON input by Postman
@@ -23,35 +22,23 @@ An example of RAW JSON input by Postman
 
 
 # Get all tickets
-
-http://localhost:3000/alltickects
+{{url}}/all
 
 Post an empty postman  
 
-# Get a list
+# Search by parameters
+{{url}}/search?device=pipe&status=open
+Please provide schema object with a parameter
 
-http://localhost:3000/doctor/
+# Search by ID
+{{url}}/update/**eb4216b593817708c6159db**
 
-# Search by keyword
-
-http://localhost:3000/search
-"profession": "cardiologist",
-"name": "mike",
-"time": 1,
-
-# Get a one user
-
-http://localhost:3000/doctor/ --> id "5eadae542a2304046c8c10af"
-
-# Delete an appointment by ID
-
-http://localhost:3000/remove/ --> id "5eadae542a2304046c8c10af"
+# Delete a ticket by ID
+{{url}}remove/**your database _id**
 
 # Update an appointment by ID
+{{url}}/update/**your database _id**
 
-http://localhost:3000/doctorupdate/:id --> id "5eadae542a2304046c8c10af"
-
-and provide a body
-"profession": "cardiologist",
-"name": "mike",
-"time": 1,
+{
+	"status": "open"
+}
