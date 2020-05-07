@@ -24,11 +24,11 @@ An example of RAW JSON input by Postman
 # Get all tickets
 {{url}}/all
 
-Post an empty postman  
+Please post an empty postman call.
 
 # Search by parameters
 {{url}}/search?device=pipe&status=open <br/>
-Please provide schema object with a parameter <br/>
+Please provide schema object with a parameter. <br/>
 
 # Find a specific ticket by ID
 {{url}}/update/**your_database_id**
