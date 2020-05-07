@@ -9,14 +9,15 @@ const ticketSchema = new mongoose.Schema({
         trim: true,
     },
 
+    //1=high, 2=middle, 3=low
     urgency: {
-        type: String, enum: ['high', 'middle', 'low'],
+        type: Number, enum: [1, 2, 3],
         require: true,
         trim: true,
     },
 
     device: {
-        type: String, enum: ['pump', 'excavator', 'pipe', 'filters', 'valve', 'vessel', 'heat exchanger', 'generator', 'electrical equipment', 'other'],
+        type: String, enum: ['pump', 'conveyor', 'pipe', 'filters', 'valve', 'vessel', 'heat exchanger', 'generator', 'electrical equipment', 'other'],
         require: true,
         trim: true
     },
@@ -34,7 +35,8 @@ const ticketSchema = new mongoose.Schema({
         trim: true,
         lowercase: true,
 
-    }
+    },
+
 }, {
     timestamps: true
 })
