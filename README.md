@@ -4,7 +4,7 @@ git clone https://github.com/AratioD/takenotes/tree/maintenancebook <br/>
 npm install<br/>
 npm run dev<br/>
 download https://www.postman.com/ <br/>
-Please see Postman's setting file in the repository.<br/>
+Please see Postman's setting file in the repository.  	Maintenance book application.postman_collection.json<br/>
 
 **your_database_id** could be the following like **eb4216b593817708c6159db**
 
