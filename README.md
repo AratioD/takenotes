@@ -21,7 +21,6 @@ An example of RAW JSON input by Postman
 	"worker": "simo putkimies"
 }
 
-
 # Get all tickets
 {{url}}/all
 
@@ -31,8 +30,8 @@ Post an empty postman
 {{url}}/search?device=pipe&status=open
 Please provide schema object with a parameter
 
-# Search by ID
-{{url}}/update/****
+# Fid a specific ticket by ID
+{{url}}/update/**your_database_id**
 
 # Delete a ticket by ID
 {{url}}remove/**your_database_id**
