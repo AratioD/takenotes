@@ -28,7 +28,7 @@ Post an empty postman
 
 # Search by parameters
 {{url}}/search?device=pipe&status=open <br/>
-Please provide schema object with a parameter
+Please provide schema object with a parameter <br/>
 
 # Find a specific ticket by ID
 {{url}}/update/**your_database_id**
