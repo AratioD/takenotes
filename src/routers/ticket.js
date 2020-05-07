@@ -25,7 +25,18 @@ router.post('/ticket', async (req, res) => {
 router.get('/all', async (req, res) => {
 
     try {
-        const tickets = await Ticket.find({})
+        const tickets = await Ticket.find({}).sort('-createdAt')
+        res.send(tickets)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
+
+router.get('/search', async (req, res) => {
+    const match = {}
+
+    try {
+        const tickets = await Ticket.find(req.query).sort('-createdAt')
         res.send(tickets)
     } catch (error) {
         res.status(500).send(error)
@@ -48,47 +59,10 @@ router.get('/all', async (req, res) => {
 //     }
 // })
 // Fetch a specific ticket all time slots.
-// router.app.get('/search', async (req, res) => {
-
-//     const match = {}
-//     // const sort = {}
-
-//     if (req.query.status) {
-//         match.status = req.query.status === 'closed'
-//     }
-
-//     try {
-//         // const ticket = await Ticket.find(req.body).sort({time: 'ascending'})
-//         await req.populate({
-//             path: 'search',
-//             match: {
-//                 urgency: 'high'
-//             }
-
-//         }).execPopulate()
-//         res.send(req.user.tasks)
-
-//         //     match,
-//             options: {
-//                 sort: {
-//                     urgency: -1
-//                 }
-//             }
-//         })
-//         const name = req.body
-//         if (ticket.length == 0) {
-//             res.send("ERROR! NO FOUND SEARCH KEY.")
-//         }
-
-//         res.send(ticket)
-//     } catch (error) {
-//         res.status(500).send("ERROR! NO FOUND SEARCH KEY." + error)
-//     }
-// })
 
 
 
-// // GET /tasks?completed=true
+// GET /tasks?completed=true
 // // GET /tasks?limit=10&skip=20
 // app.get('/search', async (req, res) => {
 //     const match = {}
