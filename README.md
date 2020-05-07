@@ -6,6 +6,7 @@ npm run dev<br/>
 download https://www.postman.com/ <br/>
 Please see Postman's setting file in the repository.<br/>
 
+**your_database_id** could be the following like **eb4216b593817708c6159db**
 
 # Create a new ticket
 http://localhost:3000/ticket
@@ -31,13 +32,13 @@ Post an empty postman
 Please provide schema object with a parameter
 
 # Search by ID
-{{url}}/update/**eb4216b593817708c6159db**
+{{url}}/update/****
 
 # Delete a ticket by ID
-{{url}}remove/**your database _id**
+{{url}}remove/**your_database_id**
 
-# Update an appointment by ID
-{{url}}/update/**your database _id**
+# Update a ticket by ID
+{{url}}/update/**your_database_id**
 
 {
 	"status": "open"
