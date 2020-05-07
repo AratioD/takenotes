@@ -15,9 +15,9 @@ An example of RAW JSON input by Postman
 <br/>
 {
 	"status": "open",
-	"urgency": "high",
-	"device": "other",
-	"description": "slippery floor",
+	"urgency": "1",
+	"device": "pump",
+	"description": "in the box has high pressure leak",
 	"worker": "simo putkimies"
 }
 
