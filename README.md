@@ -27,10 +27,10 @@ An example of RAW JSON input by Postman
 Post an empty postman  
 
 # Search by parameters
-{{url}}/search?device=pipe&status=open
+{{url}}/search?device=pipe&status=open <br/>
 Please provide schema object with a parameter
 
-# Fid a specific ticket by ID
+# Find a specific ticket by ID
 {{url}}/update/**your_database_id**
 
 # Delete a ticket by ID
